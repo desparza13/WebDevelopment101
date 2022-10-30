@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Shopping cart</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+  </head>
+  <style>
+    .badge{
+        background-color:transparent;
+        outline: transparent;
+        color: lightgray;
+    }
+    .title{
+        margin: 25px;
+        text-align: center;
+        font-weight: normal;
+    }
+    .media-img{
+            max-height: 200px;
+            width: 150px;
+            margin: 10px;
+    }
+    .container{
+        margin-top: 30px;
+    }
+    .media{
+        padding: 10px;
+        outline: auto;
+        outline-color: lightgray;
+    }
+    .trash-btn{
+        margin-left: 5px;
+    }
+    .edit{
+        background-color:darkcyan;
+    }
+    .white{
+        color:white;
+    }
+  </style>
+  <body>
+    <!--navbar-->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand nav-item nav-link active" href="/home.html">DASW</a>
+        <div class="flex-grow-1">
+            <form class="form-inline">
+                <input class="form-control col-sm-9 col-lg-10" type="text" placeholder="Encuentra de todo empieza a buscar">
+                <button class="btn btn-outline-light col-sm-3 col-lg-2" type="submit">Buscar</button>
+            </form>
+        </div>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mr-2" href="#" id="dropdownId" data-toggle="dropdown">Mi cuenta</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#login">Ingresar</a>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#registro">Registro</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/orders.html">Mis pedidos</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="shopping_cart.html"><i class="fa fa-shopping-cart"><span class="badge badge-pill badge-light">3</span></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1 class="title">Resumen de compra</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="container">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="mt-0">Set collares<button type="button" class="trash-btn btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></h5>
+                            <div class="input-group cantidad">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Cantidad:
+                                    </span>
+                                </div>
+                                <select class="custom-select">
+                                    <option selected value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <span class="input-group-text edit">
+                                        <i class="fas fa-pen white"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="input-group precio">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Cantidad:
+                                    </span>
+                                    <span class="input-group-text bg-white">350.00</span>
+                                    <span class="input-group-text">
+                                        $ m.n
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <img class="media-img mr-3" src="https://i.pinimg.com/474x/da/a3/07/daa307f48cf7550ecf74e5a0cd34bbf2.jpg" alt="Generic placeholder image">
+                    </div>
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="mt-0">Arracadas aros<button type="button" class="trash-btn btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></h5>
+                            <div class="input-group cantidad">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Cantidad:
+                                    </span>
+                                </div>
+                                <select class="custom-select md">
+                                    <option selected value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <span class="input-group-text edit">
+                                        <i class="fas fa-pen white"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="input-group precio">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Cantidad:
+                                    </span>
+                                    <span class="input-group-text bg-white">350.00</span>
+                                    <span class="input-group-text">
+                                        $ m.n
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <img class="media-img mr-3" src="https://i.pinimg.com/474x/b7/47/dd/b747dd066450ed77757c16ade07fade2.jpg" alt="Generic placeholder image">
+                    </div>
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="mt-0">Set anillos<button type="button" class="trash-btn btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button></h5>
+                            <div class="input-group cantidad">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Cantidad:
+                                    </span>
+                                </div>
+                                <select class="custom-select">
+                                    <option selected value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <span class="input-group-text edit">
+                                        <i class="fas fa-pen white"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="input-group precio">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        Cantidad:
+                                    </span>
+                                    <span class="input-group-text bg-white">350.00</span>
+                                    <span class="input-group-text">
+                                        $ m.n
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <img class="media-img mr-3" src="https://i.pinimg.com/564x/0a/98/02/0a980264eb74aa8c16e24fdd065c65af.jpg" alt="Generic placeholder image">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5>Total de compra</h5>
+                            <hr>
+                            <p>Set collares: 1 x $350.00</p>
+                            <p>Arracadas aros: 1 x $400.00</p>
+                            <p>Set anillos: 1 x $450.00</p>
+                            <hr>
+                            <p>Monto a pagar: $1200.00</p>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-success">Pagar</button>
+                            <button type="button" class="btn btn-sm btn-block btn-outline-danger">Cancelar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Modal -->
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ingresar</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="form-group">
+                          <label for="correo">Correo</label>
+                          <div class="input-group">
+                            <input type="email" name="correo" id="correo" class="form-control" placeholder="Ingresa tu correo" required>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-group">
+                              <input type="password" name="password" id="password" class="form-control" placeholder="Ingresa tu contraseña" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
+                              <div class="input-group-append">
+                                  <span class="input-group-text">
+                                      <i class="fa fa-key" aria-hidden="true"></i>
+                                  </span>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" data-dismiss="modal" class="btn-login btn btn-success btn-block">Login</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="d-flex justify-content-end">
+                        No tienes cuenta 
+                        <a href="a" data-dismiss="modal" data-toggle="modal" data-target="#registro">Registrate aquí</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="registro" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Registrar usuario</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="form-group row">
+                          <div class="input-group col-6">
+                            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre(s)" required>
+                          </div>
+                          <div class="input-group col-6">
+                            <input type="text" name="apellido" id="apellidos" class="form-control" placeholder="Apellidos" required>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="email" name="correoRegistro" id="correoRegistro" class="form-control" placeholder="Tu correo" required>
+                              </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                              <input type="password" name="passwordRegistro" id="passwordRegistro" class="form-control" placeholder="Contraseña" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                              <input type="password" name="passwordConfirmation" id="passwordConfirmation" class="form-control" placeholder="Confirmar contraseña" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" required>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" data-dismiss="modal" class="btn-login btn btn-success btn-block">Registrarse</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

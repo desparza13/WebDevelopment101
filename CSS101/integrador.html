@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tarea 2 Daniela Esparza</title>
+
+    <style>
+        hr {
+            display: block;
+            width: 15%;
+            border: 5px double #2980b9;
+            margin-left: 0px;
+        }
+
+        th {
+            text-align: left;
+            background-color: #2980b9;
+            color: white;
+            font-size: 2em;
+        }
+
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            background-color: #f6f6f6;
+        }
+
+        tr {
+            height: 2em;
+        }
+
+        tr:nth-last-of-type(even) {
+            background-color: #f6f6f6;
+        }
+
+        tr:nth-last-of-type(odd) {
+            background-color: #e9e9e9;
+        }
+
+        /* --- AÑADE AQUI TUS SELECTORES --- */
+
+        /* Ocultar los filtros (opciónes de búsqueda) */
+        .career, .grade, .columns, .category, br, hr{
+            display: none;
+        }
+        #enableFilters:checked ~* .career,
+        #enableFilters:checked ~* .grade,
+        #enableFilters:checked ~* .columns,
+        #enableFilters:checked ~* .category,
+        #enableFilters:checked ~* br, 
+        #enableFilters:checked ~* hr
+         {
+            display: inline-block;
+        }
+
+        /*Añadir estrella*/
+        input[name="career"]:checked ~ .career:checked+label::after,
+        input[name="grade"]:checked ~ .grade:checked+label::after,
+        input[name="col"]:checked ~ .columns:checked+label::after{
+            content:"⭐️"
+        }
+
+        /* Cambiar color a gris cuando no sean de interés para los filtros aplicados */
+        /*Filtros desactivados*/
+        #enableFilters:not(:checked) ~* table{
+            color:black;
+        }
+        /*La tabla de gris*/
+        .category:checked ~ table{
+            color:gray;
+        }
+        
+        /*FILTROS RELEVANTES: pintan de negro lo que se busca obtener*/
+        /*Aprobados*/
+        input[name="career"]:not(:checked) ~ #grade:checked  ~  #grade1:checked ~ table tr[data-info~="A"],
+        /*Reprobados*/
+        input[name="career"]:not(:checked)~ #grade:checked ~ #grade2:checked ~ table tr[data-info~="R"],
+        /*Filtros relevantes ISC*/
+        input[name="career"]:checked ~ #isc:checked ~ #grade:not(:checked) ~ table tr[data-info~="ISC"],
+        input[name="career"]:checked ~ #isc:checked ~ #grade:checked ~ #grade1:checked ~ table tr[data-info="ISC A"],
+        input[name="career"]:checked ~ #isc:checked ~ #grade:checked ~ #grade2:checked ~ table tr[data-info="ISC R"],
+        /*Filtros relevantes ISI*/
+        input[name="career"]:checked ~ #isi:checked ~ #grade:not(:checked) ~ table tr[data-info~="ISI"],
+        input[name="career"]:checked ~ #isi:checked ~ #grade:checked ~ #grade1:checked ~ table tr[data-info="ISI A"],
+        input[name="career"]:checked ~ #isi:checked ~ #grade:checked ~ #grade2:checked ~ table tr[data-info="ISI R"],
+        /*Filtros relevantes IE*/
+        input[name="career"]:checked ~ #ie:checked ~ #grade:not(:checked) ~ table tr[data-info~="IE"],
+        input[name="career"]:checked ~ #ie:checked ~ #grade:checked ~ #grade1:checked ~ table tr[data-info="IE A"],
+        input[name="career"]:checked ~ #ie:checked ~ #grade:checked ~ #grade2:checked ~ table tr[data-info="IE R"]
+        {
+            color:black;
+        }
+        /*PINTAR DE GRIS LO NO RELEVANTE: pintan de gris lo que no sirve en los filtros dobles*/
+        /*importante para el filtro combinado funcione y no se muestren solo los aprobados*/
+        /*Si se seleccionó ISC no mostrar nada que no sea ISC*/
+        input[name="career"]:checked ~ #isc:checked ~ #grade:checked ~ #grade1:checked ~ table tr[data-info~="ISI"],
+        input[name="career"]:checked ~ #isc:checked ~ #grade:checked ~ #grade2:checked ~ table tr[data-info~="ISI"],
+        input[name="career"]:checked ~ #isc:checked ~ #grade:checked ~ #grade1:checked ~ table tr[data-info~="IE"],
+        input[name="career"]:checked ~ #isc:checked ~ #grade:checked ~ #grade2:checked ~ table tr[data-info~="IE"],
+        /*Si se seleccionó ISI no mostrar nada que no sea ISI*/
+        input[name="career"]:checked ~ #isi:checked ~ #grade:checked ~ #grade1:checked ~ table tr[data-info~="ISC"],
+        input[name="career"]:checked ~ #isi:checked ~ #grade:checked ~ #grade2:checked ~ table tr[data-info~="ISC"],
+        input[name="career"]:checked ~ #isi:checked ~ #grade:checked ~ #grade1:checked ~ table tr[data-info~="IE"],
+        input[name="career"]:checked ~ #isi:checked ~ #grade:checked ~ #grade2:checked ~ table tr[data-info~="IE"],
+        /*Si se seleccionó IE no mostrar nada que no sea IE*/
+        input[name="career"]:checked ~ #ie:checked ~ #grade:checked ~ #grade1:checked ~ table tr[data-info~="ISC"],
+        input[name="career"]:checked ~ #ie:checked ~ #grade:checked ~ #grade2:checked ~ table tr[data-info~="ISC"],
+        input[name="career"]:checked ~ #ie:checked ~ #grade:checked ~ #grade1:checked ~ table tr[data-info~="ISI"],
+        input[name="career"]:checked ~ #ie:checked ~ #grade:checked ~ #grade2:checked ~ table tr[data-info~="ISI"]{
+            color:gray;
+        }
+        
+        /* Mostrar / ocultar columnas seleccionadas de la tabla */
+        #enableFilter:not(:checked) ~ table{
+            display: inline-block;
+        }
+        /*Encabezados*/
+        #columns:checked ~ input[name="col1"]:not(:checked) ~ #studentData tr th:nth-of-type(1),
+        #columns:checked ~ input[name="col2"]:not(:checked) ~ #studentData tr th:nth-of-type(2),
+        #columns:checked ~ input[name="col3"]:not(:checked) ~ #studentData tr th:nth-of-type(3),
+        #columns:checked ~ input[name="col4"]:not(:checked) ~ #studentData tr th:nth-of-type(4),
+        #columns:checked ~ input[name="col5"]:not(:checked) ~ #studentData tr th:nth-of-type(5),
+        /*Contenido*/
+        #columns:checked ~ input[name="col1"]:not(:checked) ~ table tr td:nth-of-type(1),
+        #columns:checked ~ input[name="col2"]:not(:checked) ~ table tr td:nth-of-type(2),
+        #columns:checked ~ input[name="col3"]:not(:checked) ~ table tr td:nth-of-type(3),
+        #columns:checked ~ input[name="col4"]:not(:checked) ~ table tr td:nth-of-type(4),
+        #columns:checked ~ input[name="col5"]:not(:checked) ~ table tr td:nth-of-type(5)
+        {
+            display: none;
+        }
+
+        /* Cambiar el tamaño de letra a 1.8em a los labels inmediatamente después de la clase category */
+        .category+label{
+            font-size: 1.8em;
+        }
+
+        /* Si es un input de tipo radio o si es de clase columnas aplicar margin-left: 25px */
+        .columns, input[type="radio"]{
+            margin-left: 25px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1> Filtros de alumnos </h1>
+
+    <input type="checkbox" id="enableFilters" checked>
+    <label for="enableFilters"> Mostrar opciones de búsqueda</label>
+    <hr>
+
+    <div id="main">
+        <div id="filterSection">
+            <!-- Clasificación por sexo clase .career -->
+            <input class="category" type="checkbox" name="career">
+            <label class="career" for="r1"> Carrera </label> <br>
+            <input class="career" type="radio" name="career" id="isc">
+            <label class="career" for="r2"> Ing. en Sistemas Computacionales </label> <br>
+            <input class="career" type="radio" name="career" id="isi">
+            <label class="career" for="r3"> Ing. en Seguridad Informática </label> <br>
+            <input class="career" type="radio" name="career" id="ie" checked>
+            <label class="career" for="r4"> Ing. Electrónica </label> <br>
+
+            <!-- Clasificación por Calificación clase .grade -->
+
+            <input class="category" type="checkbox" name="grade" id="grade">
+            <label class="grade" for="grade"> Calificación </label> <br>
+            <input class="grade" type="radio" name="grade" id="grade1" checked>
+            <label class="grade" for="grade1"> Aprobados </label> <br>
+            <input class="grade" type="radio" name="grade" id="grade2">
+            <label class="grade" for="grade2"> Reprobados </label> <br>
+
+            <!-- Mostrar/ocultar columnas clase .columns  -->
+
+            <input class="category" type="checkbox" name="col" id="columns">
+            <label class="columns" for="ch1"> Mostrar algunas columnas </label> <br>
+            <input class="columns" type="checkbox" name="col1" checked>
+            <label class="columns" for="col1"> Nombre </label> <br>
+            <input class="columns" type="checkbox" name="col2">
+            <label class="columns" for="col2"> Correo </label> <br>
+            <input class="columns" type="checkbox" name="col3" checked>
+            <label class="columns" for="col3"> Carrera </label> <br>
+            <input class="columns" type="checkbox" name="col4">
+            <label class="columns" for="col4"> Creditos </label> <br>
+            <input class="columns" type="checkbox" name="col5">
+            <label class="columns" for="col5"> Promedio </label> <br>
+
+            <hr>
+
+            <table id="studentData">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Carrera</th>
+                    <th>Créditos</th>
+                    <th>Promedio</th>
+                </tr>
+
+                <tr data-info="ISI R">
+                    <td>Juan Perez</td>
+                    <td>si123456@iteso.mx</td>
+                    <td>ISI</td>
+                    <td>165</td>
+                    <td>5.5</td>
+                </tr>
+
+                <tr data-info="ISC R">
+                    <td>Maria Lopez</td>
+                    <td>is654321@iteso.mx</td>
+                    <td>ISC</td>
+                    <td>375</td>
+                    <td>5.8</td>
+                </tr>
+
+                <tr data-info="IE A">
+                    <td>Antonio Hernandez</td>
+                    <td>ie678945@iteso.mx</td>
+                    <td>IE</td>
+                    <td>197</td>
+                    <td>8.9</td>
+                </tr>
+
+                <tr data-info="ISI A">
+                    <td>Alejandra Ramos</td>
+                    <td>si547698@iteso.mx</td>
+                    <td>ISI</td>
+                    <td>210</td>
+                    <td>7.7</td>
+                </tr>
+
+                <tr data-info="ISC A">
+                    <td>Rodrigo Martinez</td>
+                    <td>is192837@iteso.mx</td>
+                    <td>ISC</td>
+                    <td>310</td>
+                    <td>9.7</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
